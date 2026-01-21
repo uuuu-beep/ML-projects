@@ -59,12 +59,29 @@ This project connects textbook theory to a complete ML workflow on real tabular 
 
 ---
 
+### 4. CAFA 6 – Protein Function Prediction (bioinformatics, PyTorch, deep learning)
+
+Folder: [`CAFA6-Protein function prediction`](CAFA6-Protein%20function%20prediction/)
+
+- Kaggle competition for predicting **Gene Ontology (GO)** terms from protein sequences.
+- Building **modular prediction channels** that can later be combined into an ensemble:
+  - **CNN1D** — 1D convolutional network predicting GO terms directly from sequence.
+  - **ESM2 pipeline** — Leveraging pretrained protein language model embeddings with MLP, kNN neighbor prior, and taxonomy prior.
+  - **PPI network builder** — Integrating STRING and BioGRID databases to create a human protein-protein interaction network for neighbor-based label propagation.
+- Key challenges:
+  - **Multi-label prediction at scale** — Thousands of GO terms with extreme class imbalance.
+  - **Heterogeneous data fusion** — Combining sequence features, embeddings, taxonomy, and interaction networks.
+  - **Bioinformatics workflows** — Working with FASTA files, UniProt IDs, and large-scale protein databases.
+
+This project represents my first serious step into **computational biology** and **bioinformatics**, applying deep learning to a real-world protein function prediction challenge.
+
+See the project README in that folder for full technical details.
+
+---
+
 ## Ongoing work (not yet in this repo)
 
-Alongside these completed projects, I’m currently working on:
-
-- **CAFA 6 – Protein Function Prediction**  
-  Designing deep learning models (and baselines) to predict protein function from sequence, exploring sequence encoders, multi-label evaluation metrics, and large-scale bioinformatics workflows.
+Alongside these completed projects, I'm currently working on:
 
 - **FitMealFinder – AI-powered restaurant meal recommender**  
   A mobile app (React Native + Python backend) that helps users find restaurant meals matching their macro/micronutrient goals. This combines:
