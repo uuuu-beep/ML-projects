@@ -8,9 +8,9 @@ I started this project after working through the example chapters in **An Introd
 - comparing a linear model with a **non-linear tree-based method**, and
 - generating a proper Kaggle submission.
 
-The notebook in this folder is:
+The pipeline described below runs from raw data → cleaning → models → submission.
 
-- `finaltitanic.ipynb` – full pipeline from raw data → cleaning → models → submission.
+> **Note:** the notebook for this project is not yet committed to this repository.
 
 ---
 

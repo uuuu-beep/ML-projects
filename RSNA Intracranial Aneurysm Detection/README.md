@@ -1,11 +1,10 @@
-## RSNA Intracranial Aneurysm Detection (Kaggle, PyTorch)
+# RSNA Intracranial Aneurysm Detection (Kaggle, PyTorch)
 
-This repository contains my first end-to-end project on 3D medical imaging, using the RSNA Intracranial Aneurysm Detection challenge dataset. It was my introduction to working with **CT and MRI head scans**, **DICOM**, and **3D/2.5D representations** rather than simple 2D images.
+My first end-to-end project on 3D medical imaging, using the RSNA Intracranial Aneurysm Detection challenge dataset. It was my introduction to working with **CT and MRI head scans**, **DICOM**, and **3D/2.5D representations** rather than simple 2D images.
 
 Because the dataset is >200 GB and my local machine (MacBook M2, 256 GB SSD) cannot store or process it comfortably, **all experiments were run on Kaggle** with their provided GPU and RAM limits. A large part of the work was therefore about designing a **memory-safe, cache-friendly pipeline** that can actually run to completion on realistic hardware.
 
-**Notebook:**  
-[`RSNA Intracranial Aneurysm Detection Project.ipynb`](RSNA%20Intracranial%20Aneurysm%20Detection/RSNA%20Intracranial%20Aneurysm%20Detection%20Project.ipynb)
+**Notebook:** [`rsna_aneurysm_detection.ipynb`](rsna_aneurysm_detection.ipynb)
 
 ---
 

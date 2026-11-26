@@ -1,6 +1,8 @@
 # ML-projects
 
-This repository collects a selection of my machine learning projects that I completed while learning from textbooks (ISLR, deep learning courses) and Kaggle competitions, and while preparing for PhD applications.
+This repository collects a selection of my machine learning projects, built while working through textbooks (*An Introduction to Statistical Learning*, *Hands-On Machine Learning*) and Kaggle competitions, and while preparing for postgraduate applications in computational biology.
+
+I am a First-Class BSc (Hons) Biomedical Sciences graduate (University of Greenwich, 2025) moving toward computational biology. These projects are self-directed — my degree contained no programming or statistics modules, so everything here was built outside the curriculum.
 
 Each subfolder has its own detailed README (technical + personal reflection).
 
@@ -36,7 +38,7 @@ Folder: [`Sheep Classification Challenge`](Sheep%20Classification%20Challenge/)
   - building a strong **data augmentation** pipeline,
   - using **Grad-CAM** to visualise where CNNs focus,
   - comparing loss functions and training strategies (CE warm-up vs focal loss).
-- Includes the final **Kaggle submission (`finalresultgoat.csv`)** and leaderboard scores, plus an optional screenshot.
+- Public leaderboard ≈ **0.615**, private ≈ **0.526** — not state-of-the-art, but an honest stopping point after a series of controlled experiments.
 
 This project shows my early but serious work in **real-world image recognition**, interpretability, and practical training under constraints.
 
@@ -64,10 +66,13 @@ This project connects textbook theory to a complete ML workflow on real tabular 
 Folder: [`CAFA6-Protein function prediction`](CAFA6-Protein%20function%20prediction/)
 
 - Kaggle competition for predicting **Gene Ontology (GO)** terms from protein sequences.
-- Building **modular prediction channels** that can later be combined into an ensemble:
-  - **CNN1D** — 1D convolutional network predicting GO terms directly from sequence.
-  - **ESM2 pipeline** — Leveraging pretrained protein language model embeddings with MLP, kNN neighbor prior, and taxonomy prior.
-  - **PPI network builder** — Integrating STRING and BioGRID databases to create a human protein-protein interaction network for neighbor-based label propagation.
+- A **four-channel weighted ensemble** with GO-graph propagation, built as composable channels rather than one model:
+  - **CNN1D** (weight 0.30) — 1D convolutional network predicting GO terms directly from sequence.
+  - **ESM2 + MLP** (weight 0.50) — MLP over pretrained protein language model embeddings, with kNN neighbour prior in embedding space.
+  - **PPI neighbour prior** (weight 0.15) — label propagation over a human interaction network merging STRING v12.0 and BioGRID, mapped onto UniProt accessions.
+  - **Taxonomy prior** (weight 0.05) — per-taxon GO frequency priors with global fallback.
+- Blended scores are **propagated up the GO hierarchy** over all ancestors parsed from `go-basic.obo`, so predictions are consistent with the ontology DAG and are not penalised by CAFA's weighted F-measure.
+- The blender is **streaming** — it writes per protein rather than materialising the full score matrix, since the dense channels run to multiple GB.
 - Key challenges:
   - **Multi-label prediction at scale** — Thousands of GO terms with extreme class imbalance.
   - **Heterogeneous data fusion** — Combining sequence features, embeddings, taxonomy, and interaction networks.
